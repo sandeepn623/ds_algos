@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DsAndAlgosApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DsAndAlgosApplication.class, args);
+		//SpringApplication.run(DsAndAlgosApplication.class, args);
 	}
 
 }

@@ -46,12 +46,12 @@ To demonstrate swapping lets consider the example 2
 
 [2, 4, -1, 1] 1st iteration subtract value at index 0 by 1
  0  1   2  3  the value is not equal to the index but the right position would be index 2
-[-1 4   3  1] now again checking the vale at index 0, since it is negative we ignore and continue.
+[-1 4   3  1] now again checking the value at index 0, since it is negative we ignore and continue.
  0  1   2  3
 [-1, 3, 3, 1] 2nd iteration subtract value at index 1 by 1.
  0   1  2  3  since the value is not equal to index swap it to right index 3
 [-1, 1, 3, 4] now the swapped value is equal to the index so we continue.
-  0  1  2  3  In some cases it maybe the case where swapped value is not equal to the index in which case we continue until the values are put in the right index.
+  0  1  2  3  In some cases it maybe the case where swapped value is not equal to the index, in which case we continue until the values are put in the right index.
 [-1, 1, 2, 4] 3rd iteration subtract value at index 2 by 1.
   0  1  2  3  As the index and the value are equal we continue.
 [-1, 1, 2, 3] 4th iteration subtract value at index 3 by 1.

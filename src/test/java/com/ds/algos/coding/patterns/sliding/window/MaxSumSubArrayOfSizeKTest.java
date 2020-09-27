@@ -1,4 +1,4 @@
-package com.ds.algos.grokking.coding.patterns.sliding.window;
+package com.ds.algos.coding.patterns.sliding.window;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 public class MaxSumSubArrayOfSizeKTest {
 
     @Test
-    public void test_max_sum_of_sub_array_brute_force(){
+    public void test_max_sum_of_sub_array_brute_force() {
         MaxSumSubArrayOfSizeK instance = new MaxSumSubArrayOfSizeK();
         int[] arr = {2, 1, 5, 1, 3, 2};
         int K = 3;

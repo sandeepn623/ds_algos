@@ -1,4 +1,4 @@
-package com.ds.algos.grokking.coding.patterns.sliding.window;
+package com.ds.algos.coding.patterns.sliding.window;
 
 import java.util.Arrays;
 

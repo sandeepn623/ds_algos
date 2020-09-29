@@ -52,15 +52,4 @@ public class MinSizeSubArraySum {
         }
         return minSubArraySIze==Integer.MAX_VALUE ? 0 : minSubArraySIze;
     }
-
-    public static void main(String[] args) {
-        int[] arr = {2, 1, 5, 2, 8};
-        int S = 7;
-        MinSizeSubArraySum instance = new MinSizeSubArraySum();
-        System.out.println("minSubArraySize brute force: "
-                + instance.findMinSubArrayBruteForce(S, arr));
-
-        System.out.println("minSubArraySize sliding window: "
-                + instance.findMinSubArraySlidingWindow(S, arr));
-    }
 }

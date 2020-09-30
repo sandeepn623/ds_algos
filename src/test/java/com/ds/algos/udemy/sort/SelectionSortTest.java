@@ -13,9 +13,9 @@ public class SelectionSortTest {
         int[] arr = {20, 35, -15, 7, 55, 1, -22};
         int[] sortedArrAsc = {-22, -15, 1, 7, 20, 35,55};
         SelectionSort selectionSort = new SelectionSort();
-        int[] bubbleSortedArray = selectionSort.sort(arr, SortOrder.ASCENDING);
+        int[] selectionSortedArray = selectionSort.sort(arr, SortOrder.ASCENDING);
         System.out.println(Arrays.toString(sortedArrAsc));
-        assertEquals(Arrays.toString(sortedArrAsc), Arrays.toString(bubbleSortedArray));
+        assertEquals(Arrays.toString(sortedArrAsc), Arrays.toString(selectionSortedArray));
     }
 
     @Test
@@ -23,20 +23,20 @@ public class SelectionSortTest {
         int[] arr = {20, 35, -15, 7, 55, 1, -22};
         int[] sortedArrDesc = {55, 35, 20, 7, 1, -15, -22};
         SelectionSort selectionSort = new SelectionSort();
-        int[] bubbleSortedArray = selectionSort.sort(arr, SortOrder.DESCENDING);
+        int[] selectionSortedArray = selectionSort.sort(arr, SortOrder.DESCENDING);
         System.out.println(Arrays.toString(sortedArrDesc));
-        assertEquals(Arrays.toString(sortedArrDesc), Arrays.toString(bubbleSortedArray));
+        assertEquals(Arrays.toString(sortedArrDesc), Arrays.toString(selectionSortedArray));
     }
 
     @Test
     public void test_selection_sort_empty_array() {
         int[] arr = {};
         SelectionSort selectionSort = new SelectionSort();
-        int[] bubbleSortedArray = selectionSort.sort(arr, SortOrder.ASCENDING);
-        System.out.println(Arrays.toString(bubbleSortedArray));
-        assertEquals(0, bubbleSortedArray.length);
-        bubbleSortedArray = selectionSort.sort(arr, SortOrder.DESCENDING);
-        System.out.println(Arrays.toString(bubbleSortedArray));
-        assertEquals(0, bubbleSortedArray.length);
+        int[] selectionSortedArray = selectionSort.sort(arr, SortOrder.ASCENDING);
+        System.out.println(Arrays.toString(selectionSortedArray));
+        assertEquals(0, selectionSortedArray.length);
+        selectionSortedArray = selectionSort.sort(arr, SortOrder.DESCENDING);
+        System.out.println(Arrays.toString(selectionSortedArray));
+        assertEquals(0, selectionSortedArray.length);
     }
 }

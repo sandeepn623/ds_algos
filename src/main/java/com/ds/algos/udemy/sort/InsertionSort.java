@@ -6,7 +6,6 @@ public class InsertionSort {
     public int[] sortAscending(int[] arr) {
         for (int firstUnsortedIndex = 1; firstUnsortedIndex < arr.length; firstUnsortedIndex++) {
             int newElement = arr[firstUnsortedIndex];
-            boolean shouldInsert=false;
             int j;
             for(j = firstUnsortedIndex; j > 0 && arr[j-1] > newElement; j--) {
                 arr[j] = arr[j-1];
@@ -19,7 +18,6 @@ public class InsertionSort {
     public int[] sortDescending(int[] arr) {
         for (int firstUnsortedIndex = 1; firstUnsortedIndex < arr.length; firstUnsortedIndex++) {
             int newElement = arr[firstUnsortedIndex];
-            boolean shouldInsert=false;
             int j;
             for(j = firstUnsortedIndex; j > 0 && arr[j-1] < newElement; j--) {
                 arr[j] = arr[j-1];

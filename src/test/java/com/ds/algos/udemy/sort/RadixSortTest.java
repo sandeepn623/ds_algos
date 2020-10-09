@@ -17,4 +17,14 @@ public class RadixSortTest {
         System.out.println(Arrays.toString(intArray));
         assertEquals(Arrays.toString(sortedArray), Arrays.toString(intArray));
     }
+
+    @Test
+    public void test_radix_sort_ascending_empty_input() {
+        int[] intArray = {};
+        int [] sortedArray = {};
+        RadixSort radixSort = new RadixSort();
+        radixSort.radixSort(intArray, 10, Integer.toString(intArray.length!=0?intArray[0]:0).length());
+        System.out.println(Arrays.toString(intArray));
+        assertEquals(Arrays.toString(sortedArray), Arrays.toString(intArray));
+    }
 }

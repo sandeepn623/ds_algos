@@ -35,7 +35,7 @@ public class MergeSort {
 
     //{20, 35, -15, 7, 55, 1, -22}
     private void mergeAscending(int[] input, int start, int mid, int end) {
-        if(input[mid-1] < input[mid]) {
+        if(input[mid-1] <= input[mid]) {
             return;
         }
         int i = start, j = mid, tempIndex = 0;
@@ -49,7 +49,7 @@ public class MergeSort {
 
     //{20, 35, -15, 7, 55, 1, -22}
     private void mergeDescending(int[] input, int start, int mid, int end) {
-        if(input[mid-1] > input[mid]) {
+        if(input[mid-1] >= input[mid]) {
             return;
         }
         int i = start, j = mid, tempIndex = 0;

@@ -1,5 +1,6 @@
 package com.ds.algos.udemy.sort;
 
+import com.ds.algos.udemy.sort.recursive.QuickSort;
 import org.junit.Test;
 
 import java.util.Arrays;

@@ -1,6 +1,6 @@
 package com.ds.algos.udemy.sort;
 
-public class RadixSort {
+public class RadixSortIntegers {
 
     //[4725, 4586, 1330, 8792, 1594, 5729]
     public void radixSort(int[] input, int radix, int width) {

@@ -1,5 +1,6 @@
 package com.ds.algos.udemy.sort;
 
+import com.ds.algos.udemy.sort.recursive.RecursiveInsertionSort;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -45,5 +46,17 @@ public class InsertionSortTest {
         insertionSortedArray = insertionSort.sortDescending(Arrays.copyOf(arr, arr.length));
         System.out.println(Arrays.toString(insertionSortedArray));
         assertEquals(0, insertionSortedArray.length);
+    }
+
+    @Test
+    public void test_insertion_sort_recursive() {
+        int[] arr = {20, 35, -15, 7, 55, 1, -22};
+        int[] sortedArrAsc = {-22, -15, 1, 7, 20, 35,55};
+
+        RecursiveInsertionSort insertionSort = new RecursiveInsertionSort();
+
+        insertionSort.insertionSort(arr, arr.length);
+        System.out.println(Arrays.toString(arr));
+        assertEquals(Arrays.toString(sortedArrAsc), Arrays.toString(arr));
     }
 }

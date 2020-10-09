@@ -1,8 +1,8 @@
 package com.ds.algos.udemy.sort;
 
+import com.ds.algos.udemy.sort.recursive.MergeSort;
 import org.junit.Test;
 
-import javax.swing.*;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

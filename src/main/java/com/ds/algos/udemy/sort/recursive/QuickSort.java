@@ -1,4 +1,4 @@
-package com.ds.algos.udemy.sort;
+package com.ds.algos.udemy.sort.recursive;
 
 public class QuickSort {
 

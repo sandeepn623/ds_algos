@@ -24,6 +24,7 @@ public class QuickSortTest {
         int[] intArray = {20, 35, -15, 7, 55, 1, -22};
         int[] sortedArray = {-22, -15, 1, 7, 20, 35, 55};
         quickSort.quickSort(intArray, 0, intArray.length);
+        System.out.println(Arrays.toString(intArray));
         assertEquals(Arrays.toString(sortedArray), Arrays.toString(intArray));
     }
 }

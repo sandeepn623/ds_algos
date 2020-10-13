@@ -1,15 +1,17 @@
 package com.ds.algos.udemy.list;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.Comparator;
 import java.util.NoSuchElementException;
 
 @Data
 @NoArgsConstructor
 public class SinglyLinkedList<T> {
 
-    private Node first;
+    protected Node first;
     private Node last;
 
     //addFirst
@@ -39,30 +41,33 @@ public class SinglyLinkedList<T> {
        }
     }
 
-    public void removeFirst(){
+    public Node removeFirst(){
         if(isEmpty()) throw new NoSuchElementException();
         if(first == last) {
             first = last = null;
-            return;
+            return null;
         }
         Node removedNode = first;
         Node second = first.next;
         first.next = null;
         first = second;
         second=null;
+        return removedNode;
     }
 
-    public void removeLast() {
+    public Node removeLast() {
         Node previousNode = getPreviousNode();
         if(isEmpty()) throw new NoSuchElementException();
         if(first == last) {
             first = last = null;
-            return;
+            return null;
         }
+        Node removedNode = last;
         last = previousNode;
         previousNode = null;
         last.next = null;
         //[10 -> 20 -> 30 ]
+        return removedNode;
     }
 
     private Node getPreviousNode() {
@@ -106,12 +111,19 @@ public class SinglyLinkedList<T> {
         return sb.toString();
     }
 
-    private static class Node<T> {
+    static class Node<T> {
+        @Getter
         private T value;
-        private Node next;
+        protected Node next;
 
         public Node(T value) {
             this.value = value;
+        }
+    }
+
+    static class NaturalComparator<T extends Comparable<T>> implements Comparator<T> {
+        public int compare(T a, T b) {
+            return a.compareTo(b);
         }
     }
 }

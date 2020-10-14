@@ -43,29 +43,27 @@ public class SinglyLinkedList<T> {
 
     public Node removeFirst(){
         if(isEmpty()) throw new NoSuchElementException();
+        Node removedNode = first;
         if(first == last) {
             first = last = null;
-            return null;
+        } else {
+            Node second = first.next;
+            first.next = null;
+            first = second;
         }
-        Node removedNode = first;
-        Node second = first.next;
-        first.next = null;
-        first = second;
-        second=null;
         return removedNode;
     }
 
     public Node removeLast() {
-        Node previousNode = getPreviousNode();
         if(isEmpty()) throw new NoSuchElementException();
+        Node removedNode = last;
         if(first == last) {
             first = last = null;
-            return null;
+        } else {
+            Node previousNode = getPreviousNode();
+            last = previousNode;
+            last.next = null;
         }
-        Node removedNode = last;
-        last = previousNode;
-        previousNode = null;
-        last.next = null;
         //[10 -> 20 -> 30 ]
         return removedNode;
     }
@@ -111,7 +109,7 @@ public class SinglyLinkedList<T> {
         return sb.toString();
     }
 
-    static class Node<T> {
+    public static class Node<T> {
         @Getter
         private T value;
         protected Node next;

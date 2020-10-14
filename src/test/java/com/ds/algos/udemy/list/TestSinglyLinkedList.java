@@ -143,7 +143,7 @@ public class TestSinglyLinkedList {
 
     @Test
     public void test_sorted_integer_linked_list_add_items(){
-        SortedIntegerLinkedList linkedList = new SortedIntegerLinkedList();
+        SortedLinkedList linkedList = new SortedLinkedList();
         linkedList.insertSortedIntegers(4);
         linkedList.insertSortedIntegers(2);
         linkedList.insertSortedIntegers(1);
@@ -154,7 +154,7 @@ public class TestSinglyLinkedList {
 
     @Test
     public void test_sorted_integer_linked_list_add_1_items(){
-        SortedIntegerLinkedList linkedList = new SortedIntegerLinkedList();
+        SortedLinkedList linkedList = new SortedLinkedList();
         linkedList.insertSortedIntegers(4);
         System.out.println(linkedList.toString());
         assertEquals("[4]", linkedList.toString());
@@ -162,10 +162,19 @@ public class TestSinglyLinkedList {
 
     @Test
     public void test_sorted_integer_linked_list_add_2_items(){
-        SortedIntegerLinkedList linkedList = new SortedIntegerLinkedList();
+        SortedLinkedList linkedList = new SortedLinkedList();
         linkedList.insertSortedIntegers(4);
         linkedList.insertSortedIntegers(3);
         System.out.println(linkedList.toString());
         assertEquals("[3, 4]", linkedList.toString());
+    }
+
+    @Test
+    public void test_sorted_integer_linked_list_add_2_string_items(){
+        SortedLinkedList linkedList = new SortedLinkedList();
+        linkedList.insertSortedIntegers("bca");
+        linkedList.insertSortedIntegers("abc");
+        System.out.println(linkedList.toString());
+        assertEquals("[abc, bca]", linkedList.toString());
     }
 }

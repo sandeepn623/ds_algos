@@ -74,7 +74,7 @@ public class ArrayStackTest {
     public void test_stack_default_size() {
         ArrayStack<Integer> arrayStack = new ArrayStack<>();
         System.out.println(arrayStack.toString());
-        assertEquals(20, arrayStack.getCapacity());
+        assertEquals(5, arrayStack.getCapacity());
     }
 
     @Test(expected = StackOverFlowException.class)

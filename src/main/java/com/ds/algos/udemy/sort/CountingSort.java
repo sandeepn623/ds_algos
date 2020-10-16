@@ -12,7 +12,7 @@ public class CountingSort {
         }
 
         int j = 0;
-        for(int i = min; i <= input.length; i++) {
+        for(int i = min; i <= countingArray.length; i++) {
             while(countingArray[i-min] > 0) {
                 input[j++] = i;
                 countingArray[i-min]--;
@@ -26,7 +26,7 @@ public class CountingSort {
             countingArray[input[i]-min]++;
         }
         int j = max-1;
-        for(int i = min; i <= input.length; i++) {
+        for(int i = min; i <= countingArray.length; i++) {
             while(countingArray[i-min] > 0) {
                 input[j--] = i;
                 countingArray[i-min]--;

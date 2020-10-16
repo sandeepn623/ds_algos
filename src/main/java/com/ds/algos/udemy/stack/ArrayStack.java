@@ -1,18 +1,14 @@
 package com.ds.algos.udemy.stack;
 
-import com.ds.algos.udemy.list.SinglyLinkedList;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.util.Arrays;
 import java.util.EmptyStackException;
 
 @NoArgsConstructor
 public class ArrayStack<T> {
 
-    private static final int DEFAULT_SIZE = 20;
+    private static final int DEFAULT_SIZE = 5;
     private int top;
-
     @Getter
     private Object[] stack = new Object[DEFAULT_SIZE];;
     @Getter

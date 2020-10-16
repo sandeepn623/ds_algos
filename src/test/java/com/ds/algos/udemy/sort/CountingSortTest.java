@@ -19,6 +19,16 @@ public class CountingSortTest {
     }
 
     @Test
+    public void test_counting_sort_asc_input_arr_length_greater_than_bounds(){
+        CountingSort countingSort = new CountingSort();
+        int[] input = {2, 5, 9, 8 ,2, 8, 7, 10, 4, 3, 3};
+        int[] sortedArray = {2, 2, 3, 3, 4, 5, 7, 8, 8, 9, 10};
+        countingSort.countingSortAsc(input, 1, 10);
+        System.out.println(Arrays.toString(input));
+        assertEquals(Arrays.toString(sortedArray), Arrays.toString(input));
+    }
+
+    @Test
     public void test_counting_sort_desc(){
         CountingSort countingSort = new CountingSort();
         int[] input = {2, 5, 9, 8 ,2, 8, 7, 10, 4, 3};

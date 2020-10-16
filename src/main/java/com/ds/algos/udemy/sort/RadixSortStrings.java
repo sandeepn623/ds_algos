@@ -21,7 +21,7 @@ public class RadixSortStrings {
         int[] countArray = new int[radix];
 
         for (String string: input) {
-            countArray[getCharIndex(string.toLowerCase(), position)]++;
+            countArray[getIndex(string.toLowerCase(), position)]++;
         }
         //Adjust the countArray
         for (int i = 1; i < countArray.length; i++) {
@@ -30,13 +30,12 @@ public class RadixSortStrings {
 
         String[] temp = new String[length];
         for(int tempIndex= length-1; tempIndex >= 0; tempIndex--) {
-            temp[--countArray[getCharIndex(input[tempIndex], position)]] = input[tempIndex];
+            temp[--countArray[getIndex(input[tempIndex], position)]] = input[tempIndex];
         }
-
-        System.arraycopy(temp, 0, input, 0, length);
+        //System.arraycopy(temp, 0, input, 0, length);
     }
 
-    private int getCharIndex(String string, int position) {
+    private int getIndex(String string, int position) {
         return string.charAt(position)-'a';
     }
 }

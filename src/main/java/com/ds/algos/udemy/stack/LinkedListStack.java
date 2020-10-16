@@ -20,13 +20,13 @@ public class LinkedListStack<T> {
 
     public Object pop() {
         if(stack.isEmpty())
-            return null;
+            throw new StackOverFlowException();
         return stack.removeFirst().getValue();
     }
 
     public Object peek() {
         if(stack.isEmpty())
-            return null;
+            throw new StackOverFlowException();
         return stack.getFirst().getValue();
     }
 

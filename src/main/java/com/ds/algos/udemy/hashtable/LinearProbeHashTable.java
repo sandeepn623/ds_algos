@@ -11,6 +11,8 @@ public class LinearProbeHashTable<K, V> {
 
     private int capacity = DEFAULT_SIZE;
 
+    private int size;
+
     public LinearProbeHashTable() {
         hashTable = new Object[DEFAULT_SIZE];
     }
@@ -26,11 +28,15 @@ public class LinearProbeHashTable<K, V> {
 
     public void put(K key, V value){
         int hashedKey = hashCode(key);
-        System.out.println("put: " + hashedKey);
+        StoredData isDuplicate = (StoredData) hashTable[hashedKey];
+        if(occupied(hashedKey) && isDuplicate.key.equals(key))
+        {
+            hashTable[hashedKey] = new StoredData<>(key, value);
+            return;
+        }
         if(occupied(hashedKey)) {
             int stopIndex = hashedKey;
             hashedKey = (hashedKey == capacity - 1) ? 0 : ++hashedKey;
-            System.out.println(hashedKey);
             while(occupied(hashedKey) && hashedKey != stopIndex) {
                 hashedKey= (hashedKey+1) % capacity;
             }
@@ -39,6 +45,7 @@ public class LinearProbeHashTable<K, V> {
             System.out.println("Already occupied position: " + hashedKey + "!");
         } else {
             hashTable[hashedKey] = new StoredData(key, value);
+            size++;
         }
     }
 
@@ -54,6 +61,7 @@ public class LinearProbeHashTable<K, V> {
         }
         Object value = hashTable[hashedKey];
         hashTable[hashedKey] = null;
+        size--;
         // nulling the value causes issues to fetch the values adjusted during put using linear probing.
         // We won't be able to find the value because when the values are removed between 2 items which are placed using linear probing.
         // That's how we find empty space during put, but if we just set the removed items to null
@@ -89,7 +97,6 @@ public class LinearProbeHashTable<K, V> {
 
     private int findKey(K key) {
         int hashedKey = hashCode(key);
-        System.out.println(hashedKey);
         if(hashTable[hashedKey] != null && ((StoredData)hashTable[hashedKey]).key.equals(key)) {
             return hashedKey;
         }
@@ -100,5 +107,9 @@ public class LinearProbeHashTable<K, V> {
             hashedKey= (hashedKey+1) % capacity;
         }
         return hashTable[hashedKey] != null && ((StoredData)hashTable[hashedKey]).key.equals(key) ? hashedKey : -1;
+    }
+
+    public int size() {
+        return size;
     }
 }

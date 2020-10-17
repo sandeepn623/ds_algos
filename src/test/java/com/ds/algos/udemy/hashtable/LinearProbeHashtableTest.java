@@ -15,7 +15,20 @@ public class LinearProbeHashtableTest {
         hashTable.put("Kumar", "Tejesh");
         hashTable.put("Neruga", "Ganga");
         hashTable.printHashTable();
-        assertEquals(10, hashTable.getHashTable().length);
+        assertEquals(5, hashTable.size());
+    }
+
+    @Test
+    public void test_add_items_to_hashtable_replace_duplicate() {
+        LinearProbeHashTable<String, String> hashTable = new LinearProbeHashTable<>(10);
+        hashTable.put("Nanjundaswamy", "Sandeep");
+        hashTable.put("Neruga", "Ganga");
+        hashTable.put("Agarwal", "Pryag");
+        hashTable.put("Kumar", "Tejesh");
+        hashTable.put("Neruga", "Ganga");
+        hashTable.printHashTable();
+        System.out.println(hashTable.size());
+        assertEquals(4, hashTable.size());
     }
 
     @Test

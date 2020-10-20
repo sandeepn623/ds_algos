@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
 @NoArgsConstructor
 public class SinglyLinkedList<T> {
 
-    protected Node first;
+    private Node first;
     private Node last;
 
     //addFirst

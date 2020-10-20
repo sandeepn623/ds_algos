@@ -20,8 +20,8 @@ public class TestDoublyLinkedList {
     @Test
     public void test_doubly_linked_list_add_2_items_last(){
         DoublyLinkedList linkedList = new DoublyLinkedList();
-        linkedList.addFirst(20);
-        linkedList.addFirst(5);
+        linkedList.addLast(20);
+        linkedList.addLast(5);
         System.out.println(linkedList.toString());
         assertEquals("[5, 20]", linkedList.toString());
     }

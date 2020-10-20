@@ -1,13 +1,14 @@
 package com.ds.algos.udemy.list;
 
 import java.util.Comparator;
+import java.util.Objects;
 
 public class SortedLinkedList<T> extends SinglyLinkedList {
 
     private Comparator comparator = Comparator.naturalOrder();
 
     public void insertSortedIntegers(T value){
-        if(isEmpty() || comparator.compare(first.getValue(), value) > 0) {
+        if(isEmpty() || comparator.compare(getFirst().getValue(), value) > 0) {
             addFirst(value);
             return;
         }
@@ -15,8 +16,8 @@ public class SortedLinkedList<T> extends SinglyLinkedList {
     }
 
     public void addSorted(T newValue) {
-        Node current = first.next;
-        Node previous = first;
+        Node current = getFirst().next;
+        Node previous = getFirst();
         while(current != null && comparator.compare(current.getValue(), newValue) < 0) {
             previous = current;
             current = current.next;
@@ -24,5 +25,8 @@ public class SortedLinkedList<T> extends SinglyLinkedList {
         Node newNode = new Node(newValue);
         newNode.next = current;
         previous.next = newNode;
+        if(Objects.isNull(current)) {
+            setLast(newNode);
+        }
     }
 }

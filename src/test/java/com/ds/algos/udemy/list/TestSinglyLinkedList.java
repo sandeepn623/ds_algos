@@ -18,10 +18,10 @@ public class TestSinglyLinkedList {
     @Test
     public void test_linked_list_add_2_items_last(){
         SinglyLinkedList linkedList = new SinglyLinkedList();
-        linkedList.addFirst(20);
-        linkedList.addFirst(5);
+        linkedList.addLast(20);
+        linkedList.addLast(5);
         System.out.println(linkedList.toString());
-        assertEquals("[5, 20]", linkedList.toString());
+        assertEquals("[20, 5]", linkedList.toString());
     }
 
     @Test
@@ -89,7 +89,7 @@ public class TestSinglyLinkedList {
         linkedList.addFirst(30);
         linkedList.addLast(5);
         System.out.println(linkedList.toString());
-        System.out.println(linkedList.indexOf(Integer.valueOf("20")));
+        System.out.println(linkedList.indexOf(20));
         assertEquals(2, linkedList.indexOf(Integer.valueOf("20")));
     }
 
@@ -149,6 +149,7 @@ public class TestSinglyLinkedList {
         linkedList.insertSortedIntegers(1);
         linkedList.insertSortedIntegers(5);
         System.out.println(linkedList.toString());
+        System.out.println(linkedList.getLast().getValue());
         assertEquals("[1, 2, 4, 5]", linkedList.toString());
     }
 

@@ -2,14 +2,12 @@ package com.ds.algos.udemy.stack;
 
 import com.ds.algos.udemy.list.SinglyLinkedList;
 
-import java.util.EmptyStackException;
-
 public class LinkedListStack<T> {
 
-    SinglyLinkedList stack;
+    SinglyLinkedList<T> stack;
 
     public LinkedListStack() {
-        stack = new SinglyLinkedList();
+        stack = new SinglyLinkedList<>();
     }
 
     public void push(T value) {

@@ -6,10 +6,10 @@ import lombok.Getter;
 import java.util.NoSuchElementException;
 
 @Data
-public class DoublyLinkedList<T> {
+public class DoublyLinkedList<E> {
 
-    private Node head;
-    private Node tail;
+    private Node<E> head;
+    private Node<E> tail;
 
     //addFirst
     //addLast
@@ -17,8 +17,8 @@ public class DoublyLinkedList<T> {
     //deleteLast
     //indexof
     //contains
-    public void addFirst(T value) {
-        Node node = new Node(value);
+    public void addFirst(E value) {
+        Node<E> node = new Node<>(value);
         if(head == null) {
             head = tail = node;
         } else {
@@ -29,8 +29,8 @@ public class DoublyLinkedList<T> {
         }
     }
 
-    public void addLast(T value) {
-        Node node = new Node(value);
+    public void addLast(E value) {
+        Node<E> node = new Node<>(value);
         if(head == null) {
             head = tail = node;
         } else {
@@ -41,15 +41,15 @@ public class DoublyLinkedList<T> {
         }
     }
 
-    public void addBefore(T newValue, T existingValue) {
+    public void addBefore(E newValue, E existingValue) {
         if(isEmpty()) throw new NoSuchElementException();
-        Node currentNode = head;
+        Node<E> currentNode = head;
         while(currentNode != null && !currentNode.value.equals(existingValue)) {
             currentNode = currentNode.next;
         }
         if(currentNode != null) {
-            Node newNode = new Node(newValue);
-            Node previous = currentNode.previous;
+            Node<E> newNode = new Node<>(newValue);
+            Node<E> previous = currentNode.previous;
             newNode.next = currentNode;
             newNode.previous = previous;
             currentNode.previous = newNode;
@@ -64,44 +64,44 @@ public class DoublyLinkedList<T> {
         }
     }
 
-    public Node removeFirst() {
+    public Node<E> removeFirst() {
         if(isEmpty()) throw new NoSuchElementException();
         if(head == tail) { // only one element in the list
             head = tail = null;
             return null;
         }
-        Node removedNode = head;
-        Node second = head.next;
+        Node<E> removedNode = head;
+        Node<E> second = head.next;
         second.previous = head.previous;
         head.next = null;
         head = second;
         return removedNode;
     }
 
-    public Node removeLast() {
+    public Node<E> removeLast() {
         if(isEmpty()) throw new NoSuchElementException();
         if(head == tail) {  // only one element in the list
             head = tail = null;
             return null;
         }
-        Node removedNode = tail;
-        Node previous = tail.previous;
+        Node<E> removedNode = tail;
+        Node<E> previous = tail.previous;
         previous.next = tail.next;
         tail.previous = null;
         tail = previous;
         return removedNode;
     }
 
-    public int indexOf(T value) {
+    public int indexOf(E value) {
         int index=0;
-        for(Node currentNode =head; currentNode != null; currentNode = currentNode.next) {
+        for(Node<E> currentNode = head; currentNode != null; currentNode = currentNode.next) {
             if(currentNode.value.equals(value)) return index;
             ++index;
         }
         return -1;
     }
 
-    public boolean contains(T value) {
+    public boolean contains(E value) {
         return indexOf(value)>=0;
     }
 
@@ -111,8 +111,8 @@ public class DoublyLinkedList<T> {
 
     @Override
     public String toString() {
-        Node node = this.getHead();
-        StringBuffer sb = new StringBuffer();
+        Node<E> node = this.getHead();
+        StringBuilder sb = new StringBuilder();
         sb.append("[");
         while (node != null){
             sb.append(node.value);
@@ -127,9 +127,9 @@ public class DoublyLinkedList<T> {
 
     static class Node<T> {
         @Getter
-        private T value;
-        private Node next;
-        private Node previous;
+        private final T value;
+        private Node<T> next;
+        private Node<T> previous;
         Node(T value) {
             this.value = value;
         }

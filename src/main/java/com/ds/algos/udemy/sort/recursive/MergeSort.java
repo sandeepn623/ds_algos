@@ -1,7 +1,5 @@
 package com.ds.algos.udemy.sort.recursive;
 
-import java.util.Arrays;
-
 public class MergeSort {
 
     /**

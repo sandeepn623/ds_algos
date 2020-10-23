@@ -1,12 +1,11 @@
 package com.ds.algos.udemy.hashtable;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
 public class ChainedHashTable<K, V> {
 
-    private LinkedList<StoredData<K,V>>[] hashTable;
+    private final LinkedList<StoredData<K,V>>[] hashTable;
 
     private static final int DEFAULT_SIZE = 10;
 
@@ -27,24 +26,23 @@ public class ChainedHashTable<K, V> {
 
     public void put(K key, V value) {
         int hashedKey = hashCode(key);
-        StoredData checkForDuplicate = new StoredData<>(key, value);
-        int index = hashTable[hashedKey] != null ? hashTable[hashedKey].indexOf(checkForDuplicate) : -1;
+        StoredData<K,V> newData = new StoredData<>(key, value);
+        int index = hashTable[hashedKey] != null ? hashTable[hashedKey].indexOf(newData) : -1;
         if(index > -1) {
             hashTable[hashedKey].remove(index);
-            hashTable[hashedKey].add(index, checkForDuplicate);
+            hashTable[hashedKey].add(index, newData);
         } else {
-            hashTable[hashedKey].add(new StoredData<>(key, value));
+            hashTable[hashedKey].add(newData);
             size++;
         }
     }
 
     public Object get(K key){
         int hashedKey = hashCode(key);
-        StoredData storedData = null;
-        Iterator<StoredData<K, V>> iterator = hashTable[hashedKey].iterator();
-        while (iterator.hasNext()) {
-            storedData = iterator.next();
-            if(storedData.key.equals(key)) {
+        StoredData<K,V> storedData;
+        for (StoredData<K, V> kvStoredData : hashTable[hashedKey]) {
+            storedData = kvStoredData;
+            if (storedData.key.equals(key)) {
                 return storedData.value;
             }
         }
@@ -55,7 +53,7 @@ public class ChainedHashTable<K, V> {
         int hashedKey = hashCode(key);
         ListIterator<StoredData<K, V>> iterator = hashTable[hashedKey].listIterator();
         while (iterator.hasNext()) {
-            StoredData storedData = iterator.next();
+            StoredData<K,V> storedData = iterator.next();
             if(storedData.key.equals(key)) {
                 iterator.remove();
                 size--;
@@ -74,10 +72,8 @@ public class ChainedHashTable<K, V> {
             if(hashTable[i] == null || hashTable[i].isEmpty()) {
                 System.out.println("Value at Position:  " + i + " is empty");
             } else {
-                Iterator<StoredData<K, V>> iterator = hashTable[i].iterator();
-                while (iterator.hasNext()) {
-                    StoredData storedData = iterator.next();
-                    System.out.print("key: " + storedData.key + " value: " +storedData.value);
+                for (StoredData<K, V> storedData : hashTable[i]) {
+                    System.out.print("key: " + storedData.key + " value: " + storedData.value);
                     System.out.print(" -> ");
                 }
                 System.out.println("null");

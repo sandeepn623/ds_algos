@@ -25,10 +25,10 @@ public class RadixSortIntegers {
             temp[--countArray[getDigit(input[tempIndex], position, radix)]] = input[tempIndex];
         }
 
-        for (int tempIndex = 0; tempIndex < length; tempIndex++) {
+        /*for (int tempIndex = 0; tempIndex < length; tempIndex++) {
             input[tempIndex] = temp[tempIndex];
-        }
-        //System.arraycopy(temp, 0, input, 0, length);
+        }*/
+        System.arraycopy(temp, 0, input, 0, length);
     }
 
     private int getDigit(int value, int position, int radix) {

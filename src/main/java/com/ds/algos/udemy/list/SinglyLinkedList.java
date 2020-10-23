@@ -4,15 +4,14 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.Comparator;
 import java.util.NoSuchElementException;
 
 @Data
 @NoArgsConstructor
-public class SinglyLinkedList<T> {
+public class SinglyLinkedList<E> {
 
-    private Node first;
-    private Node last;
+    private Node<E> first;
+    private Node<E> last;
 
     //addFirst
     //addLast
@@ -21,8 +20,8 @@ public class SinglyLinkedList<T> {
     //indexof
     //contains
 
-    public void addFirst(T value) {
-        Node node = new Node(value);
+    public void addFirst(E value) {
+        Node<E> node = new Node<>(value);
         if(isEmpty())
            first = last = node;
         else {
@@ -31,8 +30,8 @@ public class SinglyLinkedList<T> {
         }
     }
 
-    public void addLast(T value) {
-       Node node = new Node(value);
+    public void addLast(E value) {
+       Node<E> node = new Node<>(value);
        if(isEmpty())
            first = last = node;
        else {
@@ -41,51 +40,50 @@ public class SinglyLinkedList<T> {
        }
     }
 
-    public Node removeFirst(){
+    public Node<E> removeFirst(){
         if(isEmpty()) throw new NoSuchElementException();
-        Node removedNode = first;
+        Node<E> removedNode = first;
         if(first == last) {
             first = last = null;
         } else {
-            Node second = first.next;
+            Node<E> second = first.next;
             first.next = null;
             first = second;
         }
         return removedNode;
     }
 
-    public Node removeLast() {
+    public Node<E> removeLast() {
         if(isEmpty()) throw new NoSuchElementException();
-        Node removedNode = last;
+        Node<E> removedNode = last;
         if(first == last) {
             first = last = null;
         } else {
-            Node previousNode = getPreviousNode();
-            last = previousNode;
+            last = getPreviousNode();
             last.next = null;
         }
         //[10 -> 20 -> 30 ]
         return removedNode;
     }
 
-    private Node getPreviousNode() {
-        Node current = this.first;
+    private Node<E> getPreviousNode() {
+        Node<E> current = this.first;
         while(current.next != last) {
             current = current.next;
         }
         return current;
     }
 
-    public int indexOf(T value){
+    public int indexOf(E value){
         int index = 0;
-        for (Node current = first; current != null; current = current.next) {
+        for (Node<E> current = first; current != null; current = current.next) {
             if(current.value.equals(value)) return index;
             ++index;
         }
         return -1;
     }
 
-    public boolean contains(T value) {
+    public boolean contains(E value) {
         return (indexOf(value) >=0);
     }
 
@@ -95,8 +93,8 @@ public class SinglyLinkedList<T> {
 
     @Override
     public String toString() {
-        Node node = this.getFirst();
-        StringBuffer sb = new StringBuffer();
+        Node<E> node = this.getFirst();
+        StringBuilder sb = new StringBuilder();
         sb.append("[");
         while (node != null){
             sb.append(node.value);
@@ -111,17 +109,11 @@ public class SinglyLinkedList<T> {
 
     public static class Node<T> {
         @Getter
-        private T value;
-        protected Node next;
+        private final T value;
+        protected Node<T> next;
 
         public Node(T value) {
             this.value = value;
-        }
-    }
-
-    static class NaturalComparator<T extends Comparable<T>> implements Comparator<T> {
-        public int compare(T a, T b) {
-            return a.compareTo(b);
         }
     }
 }

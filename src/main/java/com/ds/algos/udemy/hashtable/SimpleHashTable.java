@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class SimpleHashTable<K, V> {
 
     @Getter
-    private Object[] hashTable;
+    private final Object[] hashTable;
 
     private static final int DEFAULT_SIZE = 5;
 

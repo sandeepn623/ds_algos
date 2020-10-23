@@ -28,7 +28,7 @@ public class LinearProbeHashTable<K, V> {
 
     public void put(K key, V value){
         int hashedKey = hashCode(key);
-        StoredData isDuplicate = (StoredData) hashTable[hashedKey];
+        StoredData<K,V> isDuplicate = (StoredData<K,V>) hashTable[hashedKey];
         if(occupied(hashedKey) && isDuplicate.key.equals(key))
         {
             hashTable[hashedKey] = new StoredData<>(key, value);
@@ -44,14 +44,14 @@ public class LinearProbeHashTable<K, V> {
         if(occupied(hashedKey)) {
             System.out.println("Already occupied position: " + hashedKey + "!");
         } else {
-            hashTable[hashedKey] = new StoredData(key, value);
+            hashTable[hashedKey] = new StoredData<>(key, value);
             size++;
         }
     }
 
     public Object get(K key) {
         int hashedKey = findKey(key);
-        return hashedKey == -1 ? null : ((StoredData)hashTable[hashedKey]).value;
+        return hashedKey == -1 ? null : ((StoredData<K,V>)hashTable[hashedKey]).value;
     }
 
     public Object remove(K key) {
@@ -70,10 +70,10 @@ public class LinearProbeHashTable<K, V> {
 
         Object[] oldHashtable = hashTable;
         hashTable = new Object[oldHashtable.length];
-        for(int i = 0; i < oldHashtable.length; i++) {
-            if(oldHashtable[i] != null) {
-                K oldKey = (K) ((StoredData)oldHashtable[i]).key;
-                V oldValue = (V) ((StoredData)oldHashtable[i]).value;
+        for (Object o : oldHashtable) {
+            if (o != null) {
+                K oldKey = ((StoredData<K,V>) o).key;
+                V oldValue = ((StoredData<K,V>) o).value;
                 put(oldKey, oldValue);
             }
         }
@@ -97,16 +97,16 @@ public class LinearProbeHashTable<K, V> {
 
     private int findKey(K key) {
         int hashedKey = hashCode(key);
-        if(hashTable[hashedKey] != null && ((StoredData)hashTable[hashedKey]).key.equals(key)) {
+        if(hashTable[hashedKey] != null && ((StoredData<K,V>)hashTable[hashedKey]).key.equals(key)) {
             return hashedKey;
         }
 
         int stopIndex = hashedKey;
         hashedKey = (hashedKey == capacity - 1) ? 0 : ++hashedKey;
-        while(hashedKey != stopIndex && hashTable[hashedKey] != null && !((StoredData)hashTable[hashedKey]).key.equals(key)) {
+        while(hashedKey != stopIndex && hashTable[hashedKey] != null && !((StoredData<K,V>)hashTable[hashedKey]).key.equals(key)) {
             hashedKey= (hashedKey+1) % capacity;
         }
-        return hashTable[hashedKey] != null && ((StoredData)hashTable[hashedKey]).key.equals(key) ? hashedKey : -1;
+        return hashTable[hashedKey] != null && ((StoredData<K,V>)hashTable[hashedKey]).key.equals(key) ? hashedKey : -1;
     }
 
     public int size() {

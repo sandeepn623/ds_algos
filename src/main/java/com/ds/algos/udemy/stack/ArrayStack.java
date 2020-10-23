@@ -10,7 +10,7 @@ public class ArrayStack<T> {
     private static final int DEFAULT_SIZE = 5;
     private int top;
     @Getter
-    private Object[] stack = new Object[DEFAULT_SIZE];;
+    private Object[] stack = new Object[DEFAULT_SIZE];
     @Getter
     private int capacity = DEFAULT_SIZE;
 
@@ -49,7 +49,7 @@ public class ArrayStack<T> {
 
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append("[");
         for (int i = top-1; i >= 0; i--) {
            sb.append(stack[i]);

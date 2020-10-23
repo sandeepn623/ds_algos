@@ -16,9 +16,9 @@ public class BucketSort {
             buckets[i] = new LinkedList<>();
         }
         // scattering phase
-        for (int i = 0; i < input.length; i++) {
-            int index = hashedKey(input[i], radix, position);
-            buckets[index].add(input[i]);
+        for (int i : input) {
+            int index = hashedKey(i, radix, position);
+            buckets[index].add(i);
         }
 
         // Alternatively can make use of Insertion sort.

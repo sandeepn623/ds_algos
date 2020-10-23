@@ -32,7 +32,7 @@ public class RadixSortStrings {
         for(int tempIndex= length-1; tempIndex >= 0; tempIndex--) {
             temp[--countArray[getIndex(input[tempIndex], position)]] = input[tempIndex];
         }
-        //System.arraycopy(temp, 0, input, 0, length);
+        System.arraycopy(temp, 0, input, 0, length);
     }
 
     private int getIndex(String string, int position) {

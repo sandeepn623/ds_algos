@@ -3,7 +3,6 @@ package com.ds.algos.udemy.queue;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 @NoArgsConstructor
@@ -87,7 +86,7 @@ public class ArrayQueue<T> {
 
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append("[");
         if(front<=back) {
             for (int i = front; i < back; i++) {

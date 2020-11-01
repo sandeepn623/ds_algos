@@ -2,6 +2,8 @@ package com.ds.algos.udemy.stack;
 
 import com.ds.algos.udemy.list.SinglyLinkedList;
 
+import java.util.EmptyStackException;
+
 public class LinkedListStack<T> {
 
     SinglyLinkedList<T> stack;
@@ -17,18 +19,19 @@ public class LinkedListStack<T> {
     }
 
     public Object pop() {
-        if(stack.isEmpty())
-            throw new StackOverFlowException();
+        if(isEmpty())
+            throw new EmptyStackException();
         return stack.removeFirst().getValue();
     }
 
     public Object peek() {
-        if(stack.isEmpty())
-            throw new StackOverFlowException();
+        if(isEmpty())
+            throw new EmptyStackException();
         return stack.getFirst().getValue();
     }
 
-    public String printStack() {
+    @Override
+    public String toString() {
         return stack.toString();
     }
 

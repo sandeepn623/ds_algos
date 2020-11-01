@@ -15,7 +15,7 @@ public class LinkedListStackTest {
         Object[] expectedStack = {2, 1};
         linkedListStack.push(1);
         linkedListStack.push(2);
-        String result = linkedListStack.printStack();
+        String result = linkedListStack.toString();
         System.out.println(result);
         assertEquals(Arrays.toString(expectedStack), result);
     }
@@ -35,7 +35,7 @@ public class LinkedListStackTest {
         linkedListStack.push(2);
         Object popValue = linkedListStack.pop();
         assertEquals(2, popValue);
-        String result = linkedListStack.printStack();
+        String result = linkedListStack.toString();
         System.out.println(result);
         assertEquals(Arrays.toString(expectedStack), result);
     }
@@ -48,7 +48,7 @@ public class LinkedListStackTest {
         linkedListStack.push(2);
         Object peekValue = linkedListStack.peek();
         assertEquals(2, peekValue);
-        String result = linkedListStack.printStack();
+        String result = linkedListStack.toString();
         System.out.println(result);
         assertEquals(Arrays.toString(expectedStack), result);
     }
@@ -57,7 +57,7 @@ public class LinkedListStackTest {
     public void test_print_on_empty_stack() {
         LinkedListStack<Integer> linkedListStack = new LinkedListStack<>();
         Object[] expectedStack = {};
-        String result = linkedListStack.printStack();
+        String result = linkedListStack.toString();
         System.out.println(result);
         assertEquals(Arrays.toString(expectedStack), result);
     }

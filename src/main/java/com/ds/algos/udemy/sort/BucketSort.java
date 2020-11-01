@@ -35,6 +35,8 @@ public class BucketSort {
         }
     }
 
+    // The hash function should generate hash values such that values in bucket 0 is less than values in bucket1
+    //Ex: 43, 46 should go to bucket 0 and 54 should end up in any bucket after bucket 0 and so on.
     private int hashedKey(int value, int radix, int position){
         return value/(int) Math.pow(radix, position);
     }

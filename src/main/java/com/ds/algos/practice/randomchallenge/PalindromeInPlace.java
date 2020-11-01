@@ -19,8 +19,7 @@ public class PalindromeInPlace {
     private boolean isPalindrome(String input) {
         String toLowerCase = input.toLowerCase();
         StringBuilder noPunctuationsStringBuilder = new StringBuilder();
-        for(int i=0; i<toLowerCase.length(); i++) {
-            char character = toLowerCase.charAt(i);
+        for (char character:toLowerCase.toCharArray()) {
             if(character>='a' && character<='z') {
                 noPunctuationsStringBuilder.append(character);
             }

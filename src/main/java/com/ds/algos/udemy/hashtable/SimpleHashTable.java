@@ -45,7 +45,7 @@ public class SimpleHashTable<K, V> {
     public void printHashTable() {
         System.out.println(Arrays.toString(hashTable));
     }
-    // compute has code
+    // compute hash code
     private int hashCode(K key){
         return Math.abs(key.toString().length()) % capacity;
     }

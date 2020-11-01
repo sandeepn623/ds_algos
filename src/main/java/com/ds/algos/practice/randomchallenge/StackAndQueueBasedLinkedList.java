@@ -33,10 +33,6 @@ public class StackAndQueueBasedLinkedList {
                 queue.add(character);
             }
         }
-        while(!stack.isEmpty()) {
-            if(!stack.pop().equals(queue.remove())) return false;
-        }
-
-        return true;
+        return stack.toString().equals(queue.toString());
     }
 }

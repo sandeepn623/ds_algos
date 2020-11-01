@@ -30,16 +30,20 @@ public class ArrayQueue<T> {
         queue[back] = value;
         if(back < capacity-1) {
             back++;
-        } else
-            back=0;
+        } else {
+            back = 0;
+        }
     }
 
     private void resize() {
         int numItems = size();
         Object[] temp = new Object[capacity * 2];
+        // not wrapped
         if(front<=back) {
             System.arraycopy(queue, front, temp, 0, capacity - front);
-        } else {
+        }
+        // case when the array is wrapped because the array was not full.
+        else {
             System.arraycopy(queue, front, temp, 0, capacity - front);
             System.arraycopy(queue, 0, temp, capacity - front, back);
             front = 0;
@@ -50,12 +54,12 @@ public class ArrayQueue<T> {
     }
 
     public Object remove() {
-        if(isEmpty()){
+        if(size() == 0){
             throw new NoSuchElementException();
         }
         Object value = queue[front];
         queue[front++] = null;
-        if(isEmpty()) {
+        if(size() == 0){
             front = back = 0;
         } else if(front == capacity) {
             front = 0;
@@ -64,19 +68,20 @@ public class ArrayQueue<T> {
     }
 
     public Object peek() {
-        if(isEmpty()){
-            front=back=0;
+        if(size() == 0){
             throw new NoSuchElementException();
         }
         return queue[front];
     }
 
     public int size() {
-        // not wrapped due to circular queue
+        // not wrapped
         if(front<=back) {
             return (back-front);
-        } else {
-            return (back + (queue.length- front));
+        }
+        // wrapped which means the back is now wrapped to start from index 0 as the array is no full.
+        else {
+            return back - front + queue.length;
         }
     }
 

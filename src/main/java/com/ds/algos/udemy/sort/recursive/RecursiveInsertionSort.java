@@ -28,10 +28,5 @@ public class RecursiveInsertionSort {
                 System.out.println("}");
         }
         System.out.println("------------------------------");
-
-        String s = "abcdef";
-        char[] chars = s.toCharArray();
-        System.out.println(Arrays.toString(chars));
-        System.out.println(chars[0]);
     }
 }

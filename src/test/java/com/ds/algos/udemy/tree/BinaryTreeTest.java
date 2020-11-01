@@ -13,8 +13,8 @@ public class BinaryTreeTest {
      *    15  22  26   30
      *      \          / \
      *      17       29  32
-     *        \
-     *        18
+     *     /
+     *    16
      */
     @Test
     public void test_binary_tree_insert_iterative() {
@@ -143,11 +143,14 @@ public class BinaryTreeTest {
         binaryTree.insertRecursive(22);
         binaryTree.insertRecursive(32);
         binaryTree.insertRecursive(17);
+        binaryTree.insertRecursive(16);
         binaryTree.printTreeSorted();
         System.out.println();
-        binaryTree.delete(15);
+        binaryTree.printTree();
+        binaryTree.delete(20);
         binaryTree.printTreeSorted();
-
+        System.out.println();
+        binaryTree.printTree();
     }
 
     @Test
@@ -204,7 +207,7 @@ public class BinaryTreeTest {
         binaryTree.insertRecursive(18);
         binaryTree.printTreeSorted();
         System.out.println();
-        binaryTree.delete(15);
+        binaryTree.delete(25);
         binaryTree.printTreeSorted();
     }
 

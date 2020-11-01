@@ -60,8 +60,9 @@ public class BinaryTree<T> {
     private Comparator comparator = Comparator.naturalOrder();
 
     void delete(T data) {
-        TreeNode node = delete(root, data);
+        delete(root, data);
     }
+
     /**
      * 1. Leaf node possible cases
      *  a. the given value could be min or max, if yes simply delete them.
@@ -70,7 +71,6 @@ public class BinaryTree<T> {
      * 3. If the node has 2 children.
      *
      */
-
     private TreeNode delete(TreeNode subtreeRoot, T data) {
         if(subtreeRoot == null) {
             return null;

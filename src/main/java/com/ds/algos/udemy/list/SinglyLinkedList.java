@@ -12,7 +12,7 @@ public class SinglyLinkedList<E> {
 
     private Node<E> first;
     private Node<E> last;
-
+    private int size;
     //addFirst
     //addLast
     //deleteFirst
@@ -28,6 +28,7 @@ public class SinglyLinkedList<E> {
             node.next = first;
             first = node;
         }
+        size++;
     }
 
     public void addLast(E value) {
@@ -38,6 +39,7 @@ public class SinglyLinkedList<E> {
            last.next = node;
            last = node;
        }
+       size++;
     }
 
     public Node<E> removeFirst(){
@@ -50,6 +52,7 @@ public class SinglyLinkedList<E> {
             first.next = null;
             first = second;
         }
+        size--;
         return removedNode;
     }
 
@@ -59,14 +62,60 @@ public class SinglyLinkedList<E> {
         if(first == last) {
             first = last = null;
         } else {
-            last = getPreviousNode();
+            last = getPreviousToLastNode();
             last.next = null;
         }
+        size--;
         //[10 -> 20 -> 30 ]
         return removedNode;
     }
 
-    private Node<E> getPreviousNode() {
+    public void insertAt(int index, E value) {
+        Node<E> newNode = new Node<>(value);
+        if(isEmpty()) {
+            first=last=newNode;
+        } else if(index == 0) {
+            addFirst(value);
+        } else if(index == size) {
+            addLast(value);
+        } else {
+            Node<E> node = getPrevious(index);
+            newNode.next=node.next;
+            node.next=newNode;
+            size++;
+        }
+    }
+
+    public void removeAt(int index) {
+        System.out.println(size);
+        if(index == 0) {
+            removeFirst();
+        } else if(index == size-1) {
+            removeLast();
+        } else {
+            Node<E> node = getPrevious(index);
+            Node<E> temp = node.next;
+            node.next = temp.next;
+            temp.next = null;
+        }
+        size--;
+    }
+
+    public Node<E> getPrevious(int index) {
+        if(index>size) {
+            throw new IndexOutOfBoundsException();
+        }
+        Node<E> node = first;
+        for(int i = 0; i < size; i++) {
+            if(i==index-1) {
+                return node;
+            }
+            node=node.next;
+        }
+        return node;
+    }
+
+    private Node<E> getPreviousToLastNode() {
         Node<E> current = this.first;
         while(current.next != last) {
             current = current.next;
@@ -77,7 +126,9 @@ public class SinglyLinkedList<E> {
     public int indexOf(E value){
         int index = 0;
         for (Node<E> current = first; current != null; current = current.next) {
-            if(current.value.equals(value)) return index;
+            if(current.value.equals(value)) {
+                return index;
+            }
             ++index;
         }
         return -1;

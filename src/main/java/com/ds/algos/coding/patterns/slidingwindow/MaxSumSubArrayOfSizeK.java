@@ -1,4 +1,4 @@
-package com.ds.algos.coding.patterns.sliding.window;
+package com.ds.algos.coding.patterns.slidingwindow;
 
 /**
  * The problem statement is to find maximum sum of any contiguous sub array of size 'k'.

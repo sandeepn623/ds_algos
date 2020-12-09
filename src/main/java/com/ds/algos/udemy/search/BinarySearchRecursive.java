@@ -8,7 +8,7 @@ public class BinarySearchRecursive {
     }
 
     private int binarySearch(int[] arr, int key, int start, int end) {
-        if(start == end) return -1;
+        if(start >= end) return -1;
         int mid = (start+end)/2;
         if(arr[mid] == key) {
             return mid;

@@ -23,7 +23,7 @@ public class TestDoublyLinkedList {
         linkedList.addLast(20);
         linkedList.addLast(5);
         System.out.println(linkedList.toString());
-        assertEquals("[5, 20]", linkedList.toString());
+        assertEquals("[20, 5]", linkedList.toString());
     }
 
     @Test

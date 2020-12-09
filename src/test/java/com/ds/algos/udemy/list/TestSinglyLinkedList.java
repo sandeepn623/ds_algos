@@ -36,6 +36,40 @@ public class TestSinglyLinkedList {
     }
 
     @Test
+    public void test_linked_list_insert_At(){
+        SinglyLinkedList linkedList = new SinglyLinkedList();
+        linkedList.addFirst(20);
+        linkedList.addLast(10);
+        linkedList.addFirst(30);
+        linkedList.addLast(5);
+        linkedList.insertAt(3, 7);
+        linkedList.insertAt(1, 25);
+        linkedList.insertAt(0, 40);
+        System.out.println(linkedList.toString());
+        assertEquals("[40, 30, 25, 20, 10, 7, 5]", linkedList.toString());
+    }
+
+    @Test
+    public void test_linked_list_remove_At(){
+        SinglyLinkedList linkedList = new SinglyLinkedList();
+        linkedList.addFirst(20);
+        linkedList.addLast(10);
+        linkedList.addFirst(30);
+        linkedList.addLast(5);
+        linkedList.insertAt(3, 7);
+        linkedList.insertAt(1, 25);
+        linkedList.insertAt(0, 40);
+        linkedList.insertAt(7, 2);
+        System.out.println(linkedList.toString());
+        linkedList.removeAt(7);
+        linkedList.removeAt(0);
+        linkedList.removeAt(1);
+        linkedList.removeAt(3);
+        System.out.println(linkedList.toString());
+        assertEquals("[30, 20, 10, 5]", linkedList.toString());
+    }
+
+    @Test
     public void test_linked_list_remove_items_first(){
         SinglyLinkedList linkedList = new SinglyLinkedList();
         linkedList.addFirst(10);

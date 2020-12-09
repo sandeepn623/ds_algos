@@ -1,7 +1,6 @@
-package com.ds.algos.coding.patterns.sliding.window;
+package com.ds.algos.coding.patterns.slidingwindow;
 
 import org.junit.Test;
-import org.junit.jupiter.params.provider.EmptySource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

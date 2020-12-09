@@ -20,7 +20,7 @@ public class LinkedListStackTest {
         assertEquals(Arrays.toString(expectedStack), result);
     }
 
-    @Test
+    @Test(expected = EmptyStackException.class)
     public void test_stack_pop_on_empty_stack() {
         LinkedListStack<Integer> linkedListStack = new LinkedListStack<>();
         Object popItem = linkedListStack.pop();

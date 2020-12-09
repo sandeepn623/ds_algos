@@ -1,4 +1,4 @@
-package com.ds.algos.coding.patterns.sliding.window;
+package com.ds.algos.coding.patterns.slidingwindow;
 
 import java.util.Arrays;
 

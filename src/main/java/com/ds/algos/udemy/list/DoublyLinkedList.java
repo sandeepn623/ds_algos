@@ -10,7 +10,7 @@ public class DoublyLinkedList<E> {
 
     private Node<E> head;
     private Node<E> tail;
-
+    private int size;
     //addFirst
     //addLast
     //deleteFirst
@@ -27,6 +27,7 @@ public class DoublyLinkedList<E> {
             head.previous  = node;
             head = node;
         }
+        size++;
     }
 
     public void addLast(E value) {
@@ -39,6 +40,7 @@ public class DoublyLinkedList<E> {
             tail.next = node;
             tail = node;
         }
+        size++;
     }
 
     public void addBefore(E newValue, E existingValue) {
@@ -62,33 +64,33 @@ public class DoublyLinkedList<E> {
         } else {
             throw new NoSuchElementException();
         }
+        size++;
     }
 
     public Node<E> removeFirst() {
         if(isEmpty()) throw new NoSuchElementException();
-        if(head == tail) { // only one element in the list
-            head = tail = null;
-            return null;
-        }
+
         Node<E> removedNode = head;
-        Node<E> second = head.next;
-        second.previous = head.previous;
-        head.next = null;
-        head = second;
+        head=head.next;
+        if(head == null) { // only one element in the list
+            tail=null;
+        } else {
+            head.previous=null;
+        }
+        size--;
         return removedNode;
     }
 
     public Node<E> removeLast() {
         if(isEmpty()) throw new NoSuchElementException();
-        if(head == tail) {  // only one element in the list
-            head = tail = null;
-            return null;
-        }
         Node<E> removedNode = tail;
-        Node<E> previous = tail.previous;
-        previous.next = tail.next;
-        tail.previous = null;
-        tail = previous;
+        tail=tail.previous;
+        if(tail==null) { // only one element in the list
+            head = null;
+        } else {
+            tail.next=null;
+        }
+        size--;
         return removedNode;
     }
 
@@ -125,8 +127,8 @@ public class DoublyLinkedList<E> {
         return sb.toString();
     }
 
-    static class Node<T> {
-        @Getter
+    @Data
+    public static class Node<T> {
         private final T value;
         private Node<T> next;
         private Node<T> previous;
